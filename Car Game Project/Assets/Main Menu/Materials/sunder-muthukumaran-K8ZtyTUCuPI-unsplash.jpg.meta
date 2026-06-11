@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78e46fbeea28fe54b974aee5f690c207
+guid: 488080c5cbb81764aa18f36eb671defe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bgbgbgbg_0
+      name: sunder-muthukumaran-K8ZtyTUCuPI-unsplash_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a0c1c3f8cb979b44a72a8270153eb91
-      internalID: 1936730476
+      spriteID: a9c201d1d3fcc1042b0da8fae215fd72
+      internalID: -1035972493
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: dabf7ae3a485caa4b8bdb39bb91e0505
+    spriteID: 60356665ffcc8c2429310e6e353e3c72
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +147,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      bgbgbgbg_0: 1936730476
+      sunder-muthukumaran-K8ZtyTUCuPI-unsplash_0: -1035972493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
