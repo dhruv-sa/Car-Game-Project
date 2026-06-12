@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/BAD.png.meta
+guid: acdfa988e4fdbc947b52f94b2d5df9f9
+=======
 guid: cf1747e3f08a6e1439ac9e1a7704b676
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/BAD.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

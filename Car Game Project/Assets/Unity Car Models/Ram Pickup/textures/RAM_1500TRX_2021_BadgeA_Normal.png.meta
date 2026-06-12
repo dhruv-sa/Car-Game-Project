@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/textures/RAM_1500TRX_2021_BadgeA_Normal.png.meta
+guid: 9a18763a52dd7af4a8268ecde6a8a3a8
+=======
 guid: 5e157d558e970d34a90e63e4542f697d
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/textures/RAM_1500TRX_2021_BadgeA_Normal.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

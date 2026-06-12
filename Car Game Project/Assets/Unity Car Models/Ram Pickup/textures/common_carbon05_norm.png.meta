@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/textures/common_carbon05_norm.png.meta
+guid: c43e3077e5fcdfc4c8f0fc9c77151c4a
+=======
 guid: d6cfd53b78187214b9bb5abbde3e2a51
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/textures/common_carbon05_norm.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

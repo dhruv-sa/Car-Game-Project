@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/RAM_1500TRX_2021_Grille5A_Normal.png.meta
+guid: c341ecdd49dc2a84ead0567fd7869618
+=======
 guid: 413746bbb57ed5b4aaefdf868b771139
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/RAM_1500TRX_2021_Grille5A_Normal.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

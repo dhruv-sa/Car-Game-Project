@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/Global_Texture_Coloured_Diffuse.png.meta
+guid: 7f0baa6abe5e3454a85159d275c7c0bf
+=======
 guid: 78316e13817ca6149afe39b299453151
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/Global_Texture_Coloured_Diffuse.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

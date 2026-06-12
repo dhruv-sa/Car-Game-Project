@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/RAM_1500TRX_2021_TexturedA_Diffuse.png.meta
+guid: a90fed43a246bc24398eda06f399903c
+=======
 guid: 29c5535f5709cf94ab2216592fb055f2
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/source/FINAL_MODEL_L/RAM_1500TRX_2021_TexturedA_Diffuse.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

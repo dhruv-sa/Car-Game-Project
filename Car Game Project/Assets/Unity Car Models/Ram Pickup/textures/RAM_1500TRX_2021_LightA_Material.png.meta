@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Car Game Project/Assets/Scenes/Unity Car Models/Ram Pickup/textures/RAM_1500TRX_2021_LightA_Material.png.meta
+guid: 01829318f81010d429f94d8ef314d568
+=======
 guid: 86b7235fa6abfbe41b49762a3f5ecdd9
+>>>>>>> c604e84a8c61eda48c4aa8639b9bb7937fdcf6d4:Car Game Project/Assets/Unity Car Models/Ram Pickup/textures/RAM_1500TRX_2021_LightA_Material.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
