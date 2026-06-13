@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 221379642}
   - component: {fileID: 221379643}
   m_Layer: 0
-  m_Name: Rear Right Wheel Collider
+  m_Name: RearRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223946567}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -227,6 +227,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
   m_PrefabInstance: {fileID: 1924494060}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &223946570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223946567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a609ce37d7629478c94b46a5dd8adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BMWController
+  FrontRightWheelCollider: {fileID: 1831178570}
+  RearRightWheelCollider: {fileID: 221379643}
+  FrontLeftWheelCollider: {fileID: 611272305}
+  RearLeftWheelCollider: {fileID: 720848222}
 --- !u!1 &254673809
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +351,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -351,7 +367,7 @@ GameObject:
   - component: {fileID: 611272304}
   - component: {fileID: 611272305}
   m_Layer: 0
-  m_Name: Front Left Wheel Collider
+  m_Name: FrontLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +473,7 @@ GameObject:
   - component: {fileID: 720848221}
   - component: {fileID: 720848222}
   m_Layer: 0
-  m_Name: Rear Left Wheel Collider
+  m_Name: RearLeftWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,8 +619,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069110038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06536162, y: -0.0068901055, z: 0.0004510649, w: 0.9978378}
-  m_LocalPosition: {x: -0.08509123, y: 1.572108, z: -5.951132}
+  m_LocalRotation: {x: -0.07073709, y: 0.000011289026, z: -0.000006610847, w: -0.99749506}
+  m_LocalPosition: {x: 0.01, y: 1.78, z: -4.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -792,7 +808,7 @@ GameObject:
   - component: {fileID: 1831178569}
   - component: {fileID: 1831178570}
   m_Layer: 0
-  m_Name: Front Right Wheel Collider
+  m_Name: FrontRightWheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,11 +878,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.087
+      value: -0.051
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -914,6 +930,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 223946568}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 223946570}
     - targetCorrespondingSourceObject: {fileID: -5416402257032162132, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1930687908}
