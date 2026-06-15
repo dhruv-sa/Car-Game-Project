@@ -237,7 +237,9 @@ MonoBehaviour:
   RearRightWheelTransform: {fileID: 852409190}
   FrontLeftWheelTransform: {fileID: 1579328197}
   FrontRightWheelTransform: {fileID: 762094872}
-  MotorForceValue: 5000
+  MotorForceValue: 10000
+  maxSteerAngle: 30
+  steeringSpeed: 150
 --- !u!1 &254673809
 GameObject:
   m_ObjectHideFlags: 0
