@@ -15,6 +15,8 @@ public class BMWController : MonoBehaviour
     public Transform FrontLeftWheelTransform;
     public Transform FrontRightWheelTransform;
 
+    public float MotorForceValue = 10000f; 
+
     public float maxSteerAngle = 30f; 
     // Added: How fast the wheels turn per second. Higher = faster, Lower = smoother/slower.
     public float steeringSpeed = 150f; 
@@ -59,8 +61,8 @@ public class BMWController : MonoBehaviour
 
     void MotorForce()
     {
-        RearRightWheelCollider.motorTorque = 2000f * VerticalInput;
-        RearLeftWheelCollider.motorTorque = 2000f * VerticalInput;
+        RearRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
+        RearLeftWheelCollider.motorTorque = MotorForceValue * VerticalInput;
     }
 
     void SteerCar()
