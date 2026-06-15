@@ -27,10 +27,10 @@ public class BMWController : MonoBehaviour
         MotorForce();
         UpdateWheels();
     }
-    void GetInput()
-    {
-        GetInput.GetAxis();
-    }
+    // void GetInput()
+    // {
+    //     GetInput.GetAxis();
+    // }
     void MotorForce()
     {
         RearRightWheelCollider.motorTorque = 10f;
