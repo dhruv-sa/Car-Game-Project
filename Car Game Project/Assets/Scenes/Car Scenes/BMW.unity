@@ -214,7 +214,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &223946570
@@ -443,6 +443,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291003910}
   m_Mesh: {fileID: -8272033723957448805, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
+--- !u!1 &354917065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354917066}
+  m_Layer: 0
+  m_Name: CameraPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &354917066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354917065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.11967882, y: -0.023822425, z: 0.0028725544, w: 0.9925227}
+  m_LocalPosition: {x: -0.04934739, y: 1.348595, z: -4.2223372}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651775472903}
+  m_LocalEulerAnglesHint: {x: 14.78, y: 0, z: 0}
 --- !u!1 &611272303
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +729,7 @@ GameObject:
   - component: {fileID: 1069110040}
   - component: {fileID: 1069110039}
   - component: {fileID: 1069110042}
+  - component: {fileID: 1069110043}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -823,6 +855,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1069110043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069110038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d9af2ee22de07448d8311e5289b986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarCameraScript
+  CarTransform: {fileID: 543450651775472903}
+  CameraPointTransform: {fileID: 354917066}
 --- !u!1 &1228846810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1626,7 @@ Transform:
   - {fileID: 1443551964}
   - {fileID: 762094872}
   - {fileID: 852409190}
+  - {fileID: 354917066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &559744719259969671
