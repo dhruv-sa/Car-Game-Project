@@ -6,7 +6,7 @@ public class CarCameraScript : MonoBehaviour
 
     public Transform CarTransform;
     public Transform CameraPointTransform;
-
+    private Vector3 Velocity = Vector3.zero;
     void Start()
     {
         
@@ -16,6 +16,6 @@ public class CarCameraScript : MonoBehaviour
     void LateUpdate()
     {
         transform.LookAt(CarTransform);
-        transform.position = CameraPointTransform.position;
+        transform.position = Vector3.SmoothDamp(transform.position, CameraPointTransform.position, ref Velocity, 100f*Time.deltaTime); // To add delay in the camera movement
     }
 }
