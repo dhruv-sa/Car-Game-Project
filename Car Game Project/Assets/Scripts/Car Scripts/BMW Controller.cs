@@ -95,8 +95,6 @@ public class BMWController : MonoBehaviour
 
         RearRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
         RearLeftWheelCollider.motorTorque = MotorForceValue * VerticalInput;
-        FrontRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
-        FrontLeftWheelCollider.motorTorque = MotorForceValue * VerticalInput;
     }
 
     void SteerCar()
