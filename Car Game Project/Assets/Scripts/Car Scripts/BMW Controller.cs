@@ -21,6 +21,8 @@ public class BMWController : MonoBehaviour
     public float MotorForceValue = 10000f;
     public float maxSteerAngle = 30f;
     public float steeringSpeed = 150f;
+    public Transform CarCOMTransform;
+    public Rigidbody Rigidbody;
 
     float VerticalInput;
     float HorizontalInput;
@@ -43,7 +45,8 @@ public class BMWController : MonoBehaviour
             Debug.LogError("Missing a Rigidbody component on this object! Please add one to the Car.");
         }
 
-        // SELF-COLLISION FIX: Stops the car from shaking and vibrating in place
+        Rigidbody.centerOfMass = CarCOMTransform.localPosition;
+        
         Collider carBodyCollider = GetComponent<Collider>();
         if (carBodyCollider != null)
         {
@@ -79,7 +82,10 @@ public class BMWController : MonoBehaviour
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) HorizontalInput = -1f;
         }
     }
-
+    void ApplyBrakes()
+    { 
+    
+    }
     void MotorForce()
     {
 
