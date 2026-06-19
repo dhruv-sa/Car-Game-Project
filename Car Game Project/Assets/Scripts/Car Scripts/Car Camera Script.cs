@@ -26,7 +26,7 @@ public class CarCameraScript : MonoBehaviour
     void LateUpdate()
     {
         transform.LookAt(CarTransform);
-        transform.position = Vector3.SmoothDamp(transform.position, CameraPointTransform.position, ref Velocity, 67f * Time.deltaTime); // To add delay in the camera movement
+        transform.position = Vector3.SmoothDamp(transform.position, CameraPointTransform.position, ref Velocity, 30f * Time.deltaTime); // To add delay in the camera movement
 
 
         if (Reverse == true) // To make camera change when reversing
