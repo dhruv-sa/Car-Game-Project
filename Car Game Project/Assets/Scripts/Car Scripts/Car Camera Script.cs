@@ -16,12 +16,7 @@ public class CarCameraScript : MonoBehaviour
 
     void Start()
     {
-        
-        transform.LookAt(CarTransform);
-        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPointTransform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
-        
-        transform.LookAt(CarTransform);
-        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPoint2Transform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
+        StartCam();
         
     }
 
@@ -50,4 +45,16 @@ public class CarCameraScript : MonoBehaviour
             if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed || Keyboard.current.rKey.isPressed) Reverse = true;
         }
     }
+
+    void StartCam()
+    {
+        transform.LookAt(CarTransform);
+        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPointTransform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
+
+        transform.LookAt(CarTransform);
+        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPoint2Transform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
+
+    }
+
+
 }
