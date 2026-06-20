@@ -8,15 +8,15 @@ public class CarCameraScript : MonoBehaviour
     public Transform CarTransform;
     public Transform MainCameraPointTransform;
     public Transform ReverseCameraPointTransform;
+    public Transform StartCameraPointTransform;
+    public Transform StartCameraPoint2Transform;
     private Vector3 Velocity = Vector3.zero;
 
-
-    bool Left;
-    bool Right;
     bool Reverse;
 
     void Start()
     {
+        StartCam();
         
     }
 
@@ -38,23 +38,23 @@ public class CarCameraScript : MonoBehaviour
     }
 
     void GetInput()
-    {   if (Keyboard.current != null) // Loop to use the Left camera
-
-            {
-                Left = false;
-                if (Keyboard.current.qKey.isPressed) Left = true;
-            }
-
-        if (Keyboard.current != null) // Loop to use the Right camera
-            {
-                Right = false;
-                if (Keyboard.current.qKey.isPressed) Right = true;
-            }
-
+    {  
         if (Keyboard.current != null) // Loop to use the reverse camera
         {
             Reverse = false;
             if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed || Keyboard.current.rKey.isPressed) Reverse = true;
         }
     }
+
+    void StartCam()
+    {
+        transform.LookAt(CarTransform);
+        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPointTransform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
+
+        transform.LookAt(CarTransform);
+        transform.position = Vector3.SmoothDamp(transform.position, StartCameraPoint2Transform.position, ref Velocity, 100f * Time.deltaTime); // To add delay in the camera movement
+
+    }
+
+
 }
