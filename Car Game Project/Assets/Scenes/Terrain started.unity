@@ -959,37 +959,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189199281}
   m_Mesh: {fileID: -872391592380116036, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
---- !u!1 &191049643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 191049644}
-  m_Layer: 0
-  m_Name: RightCameraPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &191049644
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191049643}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.0056396103, y: 0.7312839, z: -0.0066608638, w: 0.68201745}
-  m_LocalPosition: {x: -3.7731316, y: 1.5421093, z: -0.53994787}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1012885631}
-  m_LocalEulerAnglesHint: {x: 0.117, y: 93.992, z: -0.993}
 --- !u!1 &197753481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4266,8 +4235,6 @@ Transform:
   - {fileID: 1378055513}
   - {fileID: 1004561075}
   - {fileID: 598159704}
-  - {fileID: 191049644}
-  - {fileID: 1168732599}
   - {fileID: 612182054}
   - {fileID: 2117134413}
   - {fileID: 1976636485}
@@ -4293,11 +4260,12 @@ MonoBehaviour:
   RearRightWheelTransform: {fileID: 1004561075}
   FrontLeftWheelTransform: {fileID: 405031278}
   FrontRightWheelTransform: {fileID: 1378055513}
-  MotorForceValue: 10000
+  MotorForceValue: 5000
   maxSteerAngle: 30
-  steeringSpeed: 150
+  steeringSpeed: 300
   CarCOMTransform: {fileID: 2117134413}
   Rigidbody: {fileID: 1012885633}
+  CarBraking: 5000
 --- !u!54 &1012885633
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4306,7 +4274,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012885630}
   serializedVersion: 5
-  m_Mass: 500
+  m_Mass: 2000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4992,37 +4960,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122137504}
   m_Mesh: {fileID: -2547600105672064725, guid: dd473bb2cb7b8804eb6707cb445d1f5a, type: 3}
---- !u!1 &1168732598
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1168732599}
-  m_Layer: 0
-  m_Name: LeftCameraPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1168732599
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168732598}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.0064447634, y: -0.70895225, z: 0.00588535, w: 0.70520246}
-  m_LocalPosition: {x: 4.409067, y: 1.5399723, z: -0.26956975}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1012885631}
-  m_LocalEulerAnglesHint: {x: -0.043, y: -90.304, z: 0.999}
 --- !u!1 &1174408374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,7 +5541,7 @@ WheelCollider:
   m_GameObject: {fileID: 1342265255}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -5618,13 +5555,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6055,8 +5992,8 @@ MonoBehaviour:
   CarTransform: {fileID: 1012885631}
   MainCameraPointTransform: {fileID: 598159704}
   ReverseCameraPointTransform: {fileID: 612182054}
-  LeftCameraPointTransform: {fileID: 1168732599}
-  RightCameraPointTransform: {fileID: 191049644}
+  LeftCameraPointTransform: {fileID: 0}
+  RightCameraPointTransform: {fileID: 0}
 --- !u!114 &1505970558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6216,7 +6153,7 @@ WheelCollider:
   m_GameObject: {fileID: 1559724574}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -6230,13 +6167,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7103,7 +7040,7 @@ WheelCollider:
   m_GameObject: {fileID: 1721944012}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -7117,13 +7054,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8101,7 +8038,7 @@ WheelCollider:
   m_GameObject: {fileID: 1817669960}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
@@ -8115,13 +8052,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 5
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

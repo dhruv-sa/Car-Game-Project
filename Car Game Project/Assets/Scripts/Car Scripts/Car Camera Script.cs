@@ -7,9 +7,7 @@ public class CarCameraScript : MonoBehaviour
 
     public Transform CarTransform;
     public Transform MainCameraPointTransform;
-    public Transform ReverseCameraPointTransform; 
-    public Transform LeftCameraPointTransform;
-    public Transform RightCameraPointTransform;
+    public Transform ReverseCameraPointTransform;
     private Vector3 Velocity = Vector3.zero;
 
 
@@ -32,16 +30,6 @@ public class CarCameraScript : MonoBehaviour
         transform.LookAt(CarTransform);
         transform.position = Vector3.SmoothDamp(transform.position, MainCameraPointTransform.position, ref Velocity, 15f * Time.deltaTime); // To add delay in the camera movement
         
-        if (Left == true)
-            {       
-                transform.LookAt(CarTransform);
-                transform.position = Vector3.SmoothDamp(transform.position, LeftCameraPointTransform.position, ref Velocity, 20f * Time.deltaTime); 
-            }
-        if (Right == true) 
-            {       
-                transform.LookAt(CarTransform);
-                transform.position = Vector3.SmoothDamp(transform.position, RightCameraPointTransform.position, ref Velocity, 20f * Time.deltaTime); 
-            }
         if (Reverse == true) // To make camera change when reversing
         {       
             transform.LookAt(CarTransform);

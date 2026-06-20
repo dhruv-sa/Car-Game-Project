@@ -23,6 +23,7 @@ public class BMWController : MonoBehaviour
     public float steeringSpeed = 150f;
     public Transform CarCOMTransform;
     public Rigidbody Rigidbody;
+    public float CarBraking = 2000f;
 
     float VerticalInput;
     float HorizontalInput;
@@ -60,13 +61,17 @@ public class BMWController : MonoBehaviour
     void Update()
     {
         GetInput();
+        ApplyBrakes();
     }
 
     void FixedUpdate()
     {
+        Debug.Log("Speed: " + rb.linearVelocity.magnitude);
+        Debug.Log("RPM: " + RearRightWheelCollider.rpm);
         MotorForce();
         SteerCar();
         UpdateWheels();
+
     }
 
     void GetInput()
@@ -83,8 +88,22 @@ public class BMWController : MonoBehaviour
         }
     }
     void ApplyBrakes()
-    { 
-    
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            FrontRightWheelCollider.brakeTorque = CarBraking;
+            RearRightWheelCollider.brakeTorque = CarBraking;
+            FrontLeftWheelCollider.brakeTorque = CarBraking;
+            RearLeftWheelCollider.brakeTorque = CarBraking;
+        }
+
+        else
+        {
+            FrontRightWheelCollider.brakeTorque = 0f;
+            RearRightWheelCollider.brakeTorque = 0f;
+            FrontLeftWheelCollider.brakeTorque = 0f;
+            RearLeftWheelCollider.brakeTorque = 0f;
+        }
     }
     void MotorForce()
     {
