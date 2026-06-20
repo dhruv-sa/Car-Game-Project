@@ -66,8 +66,6 @@ public class BMWController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("Speed: " + rb.linearVelocity.magnitude);
-        Debug.Log("RPM: " + RearRightWheelCollider.rpm);
         MotorForce();
         SteerCar();
         UpdateWheels();
@@ -107,9 +105,6 @@ public class BMWController : MonoBehaviour
     }
     void MotorForce()
     {
-
-        Debug.Log(MotorForceValue);
-
         if (rb == null) return;
 
         RearRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
