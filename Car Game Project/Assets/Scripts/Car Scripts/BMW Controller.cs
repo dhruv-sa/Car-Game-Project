@@ -1,0 +1,149 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class BMWController : MonoBehaviour
+{
+    [Header("Wheel Colliders")]
+    public WheelCollider FrontRightWheelCollider;
+    public WheelCollider RearRightWheelCollider;
+    public WheelCollider FrontLeftWheelCollider;
+    public WheelCollider RearLeftWheelCollider;
+
+    [Header("Wheel Visual Mesh Transforms")]
+    public Transform RearLeftWheelTransform;
+    public Transform RearRightWheelTransform;
+    public Transform FrontLeftWheelTransform;
+    public Transform FrontRightWheelTransform;
+
+    [Header("Car Physics Settings")]
+    public float MotorForceValue = 10000f;
+    public float maxSteerAngle = 30f;
+    public float steeringSpeed = 150f;
+    public Transform CarCOMTransform;
+    public Rigidbody Rigidbody;
+    public float CarBraking = 2000f;
+
+    float VerticalInput;
+    float HorizontalInput;
+    float currentSteerAngle;
+    float targetSteerAngle;
+
+    // This line tells Unity what 'rb' is. If it's missing, you get a red line!
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.maxAngularVelocity = 100f;
+        }
+        else
+        {
+            Debug.LogError("Missing a Rigidbody component on this object! Please add one to the Car.");
+        }
+
+        Rigidbody.centerOfMass = CarCOMTransform.localPosition;
+        
+        Collider carBodyCollider = GetComponent<Collider>();
+        if (carBodyCollider != null)
+        {
+            if (FrontRightWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, FrontRightWheelCollider);
+            if (FrontLeftWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, FrontLeftWheelCollider);
+            if (RearRightWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, RearRightWheelCollider);
+            if (RearLeftWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, RearLeftWheelCollider);
+        }
+    }
+
+    void Update()
+    {
+        GetInput();
+        ApplyBrakes();
+    }
+
+    void FixedUpdate()
+    {
+        Debug.Log("Speed: " + rb.linearVelocity.magnitude);
+        Debug.Log("RPM: " + RearRightWheelCollider.rpm);
+        MotorForce();
+        SteerCar();
+        UpdateWheels();
+
+    }
+
+    void GetInput()
+    {
+        if (Keyboard.current != null)
+        {
+            VerticalInput = 0f;
+            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed) VerticalInput = 1f;
+            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) VerticalInput = -1f;
+
+            HorizontalInput = 0f;
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) HorizontalInput = 1f;
+            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) HorizontalInput = -1f;
+        }
+    }
+    void ApplyBrakes()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            FrontRightWheelCollider.brakeTorque = CarBraking;
+            RearRightWheelCollider.brakeTorque = CarBraking;
+            FrontLeftWheelCollider.brakeTorque = CarBraking;
+            RearLeftWheelCollider.brakeTorque = CarBraking;
+        }
+
+        else
+        {
+            FrontRightWheelCollider.brakeTorque = 0f;
+            RearRightWheelCollider.brakeTorque = 0f;
+            FrontLeftWheelCollider.brakeTorque = 0f;
+            RearLeftWheelCollider.brakeTorque = 0f;
+        }
+    }
+    void MotorForce()
+    {
+
+        Debug.Log(MotorForceValue);
+
+        if (rb == null) return;
+
+        RearRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
+        RearLeftWheelCollider.motorTorque = MotorForceValue * VerticalInput;
+        FrontRightWheelCollider.motorTorque = MotorForceValue * VerticalInput;
+        FrontLeftWheelCollider.motorTorque = MotorForceValue * VerticalInput;
+    }
+
+    void SteerCar()
+    {
+        targetSteerAngle = maxSteerAngle * HorizontalInput;
+        currentSteerAngle = Mathf.MoveTowards(currentSteerAngle, targetSteerAngle, steeringSpeed * Time.deltaTime);
+
+        FrontLeftWheelCollider.steerAngle = currentSteerAngle;
+        FrontRightWheelCollider.steerAngle = currentSteerAngle;
+    }
+
+    void UpdateWheels()
+    {
+        RotateWheel(FrontLeftWheelCollider, FrontLeftWheelTransform);
+        RotateWheel(FrontRightWheelCollider, FrontRightWheelTransform);
+        RotateWheel(RearLeftWheelCollider, RearLeftWheelTransform);
+        RotateWheel(RearRightWheelCollider, RearRightWheelTransform);
+    }
+
+    void RotateWheel(WheelCollider wheelCollider, Transform WheelTransform)
+    {
+        if (WheelTransform == null) return;
+
+        Vector3 pos;
+        Quaternion rot;
+        wheelCollider.GetWorldPose(out pos, out rot);
+
+        WheelTransform.position = pos;
+        WheelTransform.rotation = rot;
+    }
+}
