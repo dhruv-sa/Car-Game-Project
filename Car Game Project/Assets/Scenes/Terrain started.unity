@@ -3388,7 +3388,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 762.27277, y: 4.79307, z: 644.75635}
-  m_LocalScale: {x: 2.9627, y: 2.9627, z: 2.9627}
+  m_LocalScale: {x: 2.9627, y: 3.6627858, z: 2.9627}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3725,7 +3725,6 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1976636485}
   - {fileID: 1846611208}
   - {fileID: 833103714}
   - {fileID: 405031278}
@@ -8277,12 +8276,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976636481}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70710653, y: 0.00077513605, z: -0.0007754117, w: -0.70710623}
-  m_LocalPosition: {x: -0.00044211745, y: 21.291061, z: 1.7948478}
-  m_LocalScale: {x: 0.36400715, y: 0.36400712, z: 0.3640071}
+  m_LocalRotation: {x: 0.012710903, y: 0.70699257, z: -0.70699257, w: 0.012710903}
+  m_LocalPosition: {x: 438.01, y: 65, z: 930.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1012885631}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 177.94, z: 0}
 --- !u!114 &1976636486
 MonoBehaviour:
@@ -8928,8 +8927,5 @@ SceneRoots:
   - {fileID: 405274968}
   - {fileID: 781612240}
   - {fileID: 1915627700}
-<<<<<<< Updated upstream
   - {fileID: 1976636485}
   - {fileID: 845261297}
-=======
->>>>>>> Stashed changes
