@@ -5401,10 +5401,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarCameraScript
   CarTransform: {fileID: 1012885631}
-  MainCameraPointTransform: {fileID: 0}
+  MainCameraPointTransform: {fileID: 598159704}
   ReverseCameraPointTransform: {fileID: 612182054}
-  LeftCameraPointTransform: {fileID: 0}
-  RightCameraPointTransform: {fileID: 0}
+  LeftCameraPointTransform: {fileID: 1168732599}
+  RightCameraPointTransform: {fileID: 191049644}
 --- !u!114 &1505970558
 MonoBehaviour:
   m_ObjectHideFlags: 0
