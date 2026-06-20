@@ -32,15 +32,15 @@ public class CarCameraScript : MonoBehaviour
         transform.LookAt(CarTransform);
         transform.position = Vector3.SmoothDamp(transform.position, MainCameraPointTransform.position, ref Velocity, 15f * Time.deltaTime); // To add delay in the camera movement
         
-        if (Left == true) // To make camera change when reversing
+        if (Left == true)
             {       
                 transform.LookAt(CarTransform);
-                transform.position = Vector3.SmoothDamp(transform.position, LeftCameraPointTransform.position, ref Velocity, 1f * Time.deltaTime); 
+                transform.position = Vector3.SmoothDamp(transform.position, LeftCameraPointTransform.position, ref Velocity, 20f * Time.deltaTime); 
             }
-        if (Right == true) // To make camera change when reversing
+        if (Right == true) 
             {       
                 transform.LookAt(CarTransform);
-                transform.position = Vector3.SmoothDamp(transform.position, ReverseCameraPointTransform.position, ref Velocity, 1f * Time.deltaTime); 
+                transform.position = Vector3.SmoothDamp(transform.position, RightCameraPointTransform.position, ref Velocity, 20f * Time.deltaTime); 
             }
         if (Reverse == true) // To make camera change when reversing
         {       
@@ -50,12 +50,23 @@ public class CarCameraScript : MonoBehaviour
     }
 
     void GetInput()
-    {
-        if (Keyboard.current != null)
+    {   if (Keyboard.current != null) // Loop to use the Left camera
+
+            {
+                Left = false;
+                if (Keyboard.current.qKey.isPressed) Left = true;
+            }
+
+        if (Keyboard.current != null) // Loop to use the Right camera
+            {
+                Right = false;
+                if (Keyboard.current.qKey.isPressed) Right = true;
+            }
+
+        if (Keyboard.current != null) // Loop to use the reverse camera
         {
             Reverse = false;
-  
-            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) Reverse = true;
+            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed || Keyboard.current.rKey.isPressed) Reverse = true;
         }
     }
 }
