@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarSoundSystem : MonoBehaviour
 {
@@ -11,35 +12,33 @@ public class CarSoundSystem : MonoBehaviour
     public float MinPitch = 0.8f;
     public float MaxPitch = 2.0f;
 
-    // FIX: Added the Rigidbody variable so the script knows what 'rb' is
     private Rigidbody rb;
 
     void Start()
     {
-        // FIX: Grab the Rigidbody component when the game starts
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
 
         if (rb == null)
         {
-            Debug.LogError("CarSoundSystem missing Rigidbody on this GameObject!", this);
+            Debug.LogError("CarSoundSystem could not find a Rigidbody on this object or any parent objects!", this);
         }
+
+        // Fix 2: Explicitly turn on engine loops at startup if they aren't playing yet
+        if (IdleAudio != null && !IdleAudio.isPlaying) IdleAudio.Play();
+        if (DriveAudio != null && !DriveAudio.isPlaying) DriveAudio.Play();
     }
 
     void Update()
     {
-        // Note: GetInput() and ApplyBrakes() were called here but missing from your script. 
-        // If they are in another script, you don't need them here.
-
         UpdateEngineSound();
         HandleAudio();
     }
 
     void UpdateEngineSound()
     {
-        if (rb == null) return;
+        if (rb == null || IdleAudio == null || DriveAudio == null) return;
 
         float speed = rb.linearVelocity.magnitude;
-
         float normalizedSpeed = Mathf.Clamp01(speed / 40f);
 
         IdleAudio.pitch = Mathf.Lerp(MinPitch, 1.2f, normalizedSpeed);
@@ -51,26 +50,25 @@ public class CarSoundSystem : MonoBehaviour
 
     void HandleAudio()
     {
-        if (rb == null) return;
+        if (rb == null || Keyboard.current == null) return;
 
         float speed = rb.linearVelocity.magnitude;
 
-        // Brake sound ONLY when moving
-        bool braking = Input.GetKey(KeyCode.Space) && speed > 2f;
+        // Fix 3: Upgraded old legacy Input.GetKey over to the New Input System device poll
+        bool braking = Keyboard.current.spaceKey.isPressed && speed > 2f;
 
-        if (braking)
+        if (braking && BrakeAudio != null)
         {
             if (!BrakeAudio.isPlaying)
                 BrakeAudio.Play();
         }
-        else
+        else if (BrakeAudio != null)
         {
             if (BrakeAudio.isPlaying)
                 BrakeAudio.Stop();
         }
 
-        // Horn
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Keyboard.current.hKey.wasPressedThisFrame && HornAudio != null)
         {
             HornAudio.Play();
         }
