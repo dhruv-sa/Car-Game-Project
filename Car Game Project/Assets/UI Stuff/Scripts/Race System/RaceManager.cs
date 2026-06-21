@@ -1,14 +1,20 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class RaceManager : MonoBehaviour
 {
     public static RaceManager Instance;
 
+    [Header("UI References")]
+    [SerializeField] private TextMeshProUGUI currentLapTimeText;
+    [SerializeField] private TextMeshProUGUI bestLapTimeText;
+    [SerializeField] private TextMeshProUGUI overallRaceTimeText;
+    [SerializeField] private TextMeshProUGUI lapText;
     [Header("Race Settings")]
     [SerializeField] private Checkpoint[] checkpoints;
     [SerializeField] private int lastCheckpointIndex = -1;
-    [SerializeField] private bool isCircut = false;
+    [SerializeField] private bool isCircuit = false;
     [SerializeField] private int totalLaps = 1;
 
     private int currentLap = 1;
@@ -16,6 +22,12 @@ public class RaceManager : MonoBehaviour
 
     private bool raceStarted = false;
     private bool raceFinished = false;
+
+
+    [Header("Lap Timer")]
+    private float currentLapTime = 0f;
+    private float overallRaceTime = 0f;
+    private float bestLapTime = Mathf.Infinity;
 
     #region Unity Functions 
     private void Awake()
@@ -29,10 +41,23 @@ public class RaceManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        if (raceStarted)
+        {
+            UpdateTimers();
+        }
+        UpdateUI();
+    }
+           
+
+
+
     #endregion
 
 
-    #region Checkpoint Management
+            #region Checkpoint Management
 
     public void CheckPointReached(int checkpointIndex)
     {
@@ -52,12 +77,12 @@ public class RaceManager : MonoBehaviour
             {
                 StartRace();
             }
-            else if (isCircut && lastCheckpointIndex == checkpoints.Length - 1 && raceStarted)
+            else if (isCircuit && lastCheckpointIndex == checkpoints.Length - 1 && raceStarted)
             {
                 OnLapFinish();
             }
         }
-        else if (!isCircut && checkpointIndex == checkpoints.Length - 1)
+        else if (!isCircuit && checkpointIndex == checkpoints.Length - 1)
         {
             OnLapFinish();
         }
@@ -74,10 +99,23 @@ public class RaceManager : MonoBehaviour
     private void OnLapFinish()
     {
         currentLap++;
+
+        if (currentLapTime < bestLapTime)
+        {
+            bestLapTime = currentLapTime;
+        }
+
+
         if (currentLap > totalLaps)
         {
             EndRace();
         }
+        else
+        {
+            currentLapTime = 0f;
+            lastCheckpointIndex = isCircuit ? 0 : -1;
+        }
+       
     }
 
 
@@ -94,6 +132,36 @@ public class RaceManager : MonoBehaviour
         raceStarted = false;
     }
 
+    private void UpdateTimers()
+    {
+        currentLapTime += Time.deltaTime;
+        overallRaceTime += Time.deltaTime;
+
+    }
+
+
+    private void UpdateUI()
+    {
+        currentLapTimeText.text = FormatTime(currentLapTime);
+        overallRaceTimeText.text = FormatTime(overallRaceTime);
+        lapText.text = "Lap: " + currentLap + "/" + totalLaps;
+        bestLapTimeText.text = FormatTime(bestLapTime);
+    }
+
+
     #endregion
+
+    #region Utility Functions
+
+
+    private string FormatTime(float time)
+    {
+        if (float.IsInfinity(time) || time < 0) return "--:--";
+        int minttes = (int)time / 60;
+        float seconds = time % 60;
+        return string.Format("{0:00}:{1:00.00}", minttes, seconds);
+    }
+
+    #endregion 
 
 }
