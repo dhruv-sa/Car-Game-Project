@@ -132,10 +132,16 @@ public class BMWController : MonoBehaviour
             RearLeftWheelCollider.brakeTorque = 0f;
         }
 
-        if (fl_Trail != null) fl_Trail.emitting = isBraking;
-        if (rl_Trail != null) rl_Trail.emitting = isBraking;
-        if (fr_Trail != null) fr_Trail.emitting = isBraking;
-        if (rr_Trail != null) rr_Trail.emitting = isBraking;
+        WheelHit hit;
+        bool fl_Grounded = FrontLeftWheelCollider != null && FrontLeftWheelCollider.GetGroundHit(out hit);
+        bool rl_Grounded = RearLeftWheelCollider != null && RearLeftWheelCollider.GetGroundHit(out hit);
+        bool fr_Grounded = FrontRightWheelCollider != null && FrontRightWheelCollider.GetGroundHit(out hit);
+        bool rr_Grounded = RearRightWheelCollider != null && RearRightWheelCollider.GetGroundHit(out hit);
+
+        if (fl_Trail != null) fl_Trail.emitting = isBraking && fl_Grounded;
+        if (rl_Trail != null) rl_Trail.emitting = isBraking && rl_Grounded;
+        if (fr_Trail != null) fr_Trail.emitting = isBraking && fr_Grounded;
+        if (rr_Trail != null) rr_Trail.emitting = isBraking && rr_Grounded;
     }
 
     void MotorForce()
