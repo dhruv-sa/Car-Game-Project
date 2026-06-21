@@ -25,13 +25,22 @@ public class BMWController : MonoBehaviour
     public Rigidbody Rigidbody;
     public float CarBraking = 2000f;
 
+    [Header("Drift Marks")]
+    public GameObject FL_DriftMark;
+    public GameObject RL_DriftMark;
+    public GameObject FR_DriftMark;
+    public GameObject RR_DriftMark;
+
     float VerticalInput;
     float HorizontalInput;
     float currentSteerAngle;
     float targetSteerAngle;
 
-    // This line tells Unity what 'rb' is. If it's missing, you get a red line!
     private Rigidbody rb;
+    private TrailRenderer fl_Trail;
+    private TrailRenderer rl_Trail;
+    private TrailRenderer fr_Trail;
+    private TrailRenderer rr_Trail;
 
     void Start()
     {
@@ -47,7 +56,7 @@ public class BMWController : MonoBehaviour
         }
 
         Rigidbody.centerOfMass = CarCOMTransform.localPosition;
-        
+
         Collider carBodyCollider = GetComponent<Collider>();
         if (carBodyCollider != null)
         {
@@ -56,6 +65,16 @@ public class BMWController : MonoBehaviour
             if (RearRightWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, RearRightWheelCollider);
             if (RearLeftWheelCollider != null) Physics.IgnoreCollision(carBodyCollider, RearLeftWheelCollider);
         }
+
+        if (FL_DriftMark != null) fl_Trail = FL_DriftMark.GetComponent<TrailRenderer>();
+        if (RL_DriftMark != null) rl_Trail = RL_DriftMark.GetComponent<TrailRenderer>();
+        if (FR_DriftMark != null) fr_Trail = FR_DriftMark.GetComponent<TrailRenderer>();
+        if (RR_DriftMark != null) rr_Trail = RR_DriftMark.GetComponent<TrailRenderer>();
+
+        if (fl_Trail != null) fl_Trail.emitting = false;
+        if (rl_Trail != null) rl_Trail.emitting = false;
+        if (fr_Trail != null) fr_Trail.emitting = false;
+        if (rr_Trail != null) rr_Trail.emitting = false;
     }
 
     void Update()
@@ -69,7 +88,6 @@ public class BMWController : MonoBehaviour
         MotorForce();
         SteerCar();
         UpdateWheels();
-
     }
 
     void GetInput()
@@ -85,16 +103,27 @@ public class BMWController : MonoBehaviour
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) HorizontalInput = -1f;
         }
     }
+
     void ApplyBrakes()
     {
-        if (Input.GetKey(KeyCode.Space))
+        bool isBraking = false;
+
+        if (Keyboard.current != null && Keyboard.current.spaceKey.isPressed)
+        {
+            float speed = rb != null ? rb.linearVelocity.magnitude : 0f;
+            if (speed > 0.5f)
+            {
+                isBraking = true;
+            }
+        }
+
+        if (isBraking)
         {
             FrontRightWheelCollider.brakeTorque = CarBraking;
             RearRightWheelCollider.brakeTorque = CarBraking;
             FrontLeftWheelCollider.brakeTorque = CarBraking;
             RearLeftWheelCollider.brakeTorque = CarBraking;
         }
-
         else
         {
             FrontRightWheelCollider.brakeTorque = 0f;
@@ -102,7 +131,13 @@ public class BMWController : MonoBehaviour
             FrontLeftWheelCollider.brakeTorque = 0f;
             RearLeftWheelCollider.brakeTorque = 0f;
         }
+
+        if (fl_Trail != null) fl_Trail.emitting = isBraking;
+        if (rl_Trail != null) rl_Trail.emitting = isBraking;
+        if (fr_Trail != null) fr_Trail.emitting = isBraking;
+        if (rr_Trail != null) rr_Trail.emitting = isBraking;
     }
+
     void MotorForce()
     {
         if (rb == null) return;
