@@ -11,6 +11,8 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bestLapTimeText;
     [SerializeField] private TextMeshProUGUI overallRaceTimeText;
     [SerializeField] private TextMeshProUGUI lapText;
+    [SerializeField] private TextMeshProUGUI checkpointMissedText;
+
     [Header("Race Settings")]
     [SerializeField] private Checkpoint[] checkpoints;
     [SerializeField] private int lastCheckpointIndex = -1;
@@ -22,6 +24,8 @@ public class RaceManager : MonoBehaviour
 
     private bool raceStarted = false;
     private bool raceFinished = false;
+
+    private bool ifcheckpointMissed = false;
 
 
     [Header("Lap Timer")]
@@ -64,7 +68,21 @@ public class RaceManager : MonoBehaviour
         if ((!raceStarted && checkpointIndex != 0) || raceFinished) return;
         if (checkpointIndex == lastCheckpointIndex + 1)
         {
-            //UpdateCheckPoint();
+            UpdateCheckPoint(checkpointIndex);
+
+            HideCheckpointMissedText();
+        }
+        else { 
+            bool validLapFinish = isCircuit && raceStarted && lastCheckpointIndex == checkpoints.Length - 1 && checkpointIndex == 0;
+            if (validLapFinish)
+            {
+                HideCheckpointMissedText();
+                UpdateCheckPoint(checkpointIndex);
+            }
+            else
+            {
+                ShowCheckpointMissedText();
+            }
         }
 
     }
@@ -146,6 +164,37 @@ public class RaceManager : MonoBehaviour
         overallRaceTimeText.text = FormatTime(overallRaceTime);
         lapText.text = "Lap: " + currentLap + "/" + totalLaps;
         bestLapTimeText.text = FormatTime(bestLapTime);
+
+           UpdateCheckPointMissedText();
+    }
+
+    private void UpdateCheckPointMissedText()
+    {
+        if (ifcheckpointMissed)
+        {
+            float alpha = Mathf.PingPong(Time.time * 2, 1);
+            Color newColor = checkpointMissedText.color;
+            newColor.a = alpha;
+            checkpointMissedText.color = newColor;
+        }
+    }
+
+    private void ShowCheckpointMissedText()
+    {
+        if(!ifcheckpointMissed)
+        {
+            checkpointMissedText.gameObject.SetActive(true);
+            ifcheckpointMissed = true;
+        }
+    }
+
+    private void HideCheckpointMissedText()
+    {
+        if (ifcheckpointMissed)
+        {
+            checkpointMissedText.gameObject.SetActive(false);
+            ifcheckpointMissed = false;
+        }
     }
 
 
