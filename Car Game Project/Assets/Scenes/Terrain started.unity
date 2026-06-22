@@ -6020,7 +6020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc873309fe1f74a4a93e7a12eb4d2eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedometer
-  target: {fileID: 0}
+  target: {fileID: 1827925982}
   maxSpeed: 220
   minSpeedArrowAngle: 125
   maxSpeedArrowAngle: -122.712
