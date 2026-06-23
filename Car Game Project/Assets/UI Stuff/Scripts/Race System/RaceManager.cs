@@ -95,10 +95,6 @@ public class RaceManager : MonoBehaviour
             {
                 StartRace();
             }
-            else if (isCircuit && lastCheckpointIndex == checkpoints.Length - 1 && raceStarted)
-            {
-                OnLapFinish();
-            }
         }
         else if (!isCircuit && checkpointIndex == checkpoints.Length - 1)
         {
@@ -131,7 +127,7 @@ public class RaceManager : MonoBehaviour
         else
         {
             currentLapTime = 0f;
-            lastCheckpointIndex = isCircuit ? 0 : -1;
+            lastCheckpointIndex = -1;
         }
        
     }
