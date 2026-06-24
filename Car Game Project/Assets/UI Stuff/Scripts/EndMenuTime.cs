@@ -1,5 +1,7 @@
+using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndMenuDisplay : MonoBehaviour
 {
@@ -33,4 +35,6 @@ public class EndMenuDisplay : MonoBehaviour
         float seconds = time % 60;
         return string.Format("{0:00}:{1:00.00}", minutes, seconds);
     }
+
+ 
 }
