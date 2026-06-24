@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 598340557}
   - component: {fileID: 598340560}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,13 +510,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1731565027}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 598340560}
+        m_TargetAssemblyTypeName: EndMenuButton, Assembly-CSharp
+        m_MethodName: MainMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1604,6 +1604,7 @@ GameObject:
   - component: {fileID: 1731565031}
   - component: {fileID: 1731565030}
   - component: {fileID: 1731565029}
+  - component: {fileID: 1731565032}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -1687,9 +1688,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: ba98f9b6e24386e4fa0ede8820081070, type: 3}
-        m_TargetAssemblyTypeName: NewMonoBehaviourScript, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1731565032}
+        m_TargetAssemblyTypeName: EndMenuButton, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1737,6 +1738,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731565027}
   m_CullTransparentMesh: 1
+--- !u!114 &1731565032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731565027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a654bc40cf3fa554c9fffa0cc9e7320d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndMenuButton
 --- !u!1 &1771673855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eae09ee01628d79429cc6e11dfdf39a9, type: 2}
   m_sharedMaterial: {fileID: 8215385621388600301, guid: eae09ee01628d79429cc6e11dfdf39a9, type: 2}

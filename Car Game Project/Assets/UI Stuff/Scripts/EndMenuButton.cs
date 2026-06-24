@@ -7,4 +7,9 @@ public class EndMenuButton : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void MainMenuButton()
+    { 
+        SceneManager.LoadScene(0);
+    }
 }
