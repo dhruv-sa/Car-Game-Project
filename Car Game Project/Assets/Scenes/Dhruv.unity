@@ -1680,6 +1680,7 @@ MonoBehaviour:
   lastCheckpointIndex: -1
   isCircuit: 1
   totalLaps: 2
+  endMenuSceneName: EndMenu
 --- !u!4 &243104142
 Transform:
   m_ObjectHideFlags: 0
@@ -5519,7 +5520,7 @@ GameObject:
   - component: {fileID: 807720711}
   - component: {fileID: 807720710}
   m_Layer: 5
-  m_Name: idk
+  m_Name: TimerTexts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
