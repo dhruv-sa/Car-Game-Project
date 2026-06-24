@@ -6,19 +6,17 @@ public class PauseMenu : MonoBehaviour
     public bool paused = false;
     public GameObject PauseMenuCanvas;
 
-
     void Start()
     {
-        Time.timeScale = 1f;    
+        Time.timeScale = 1f;
     }
-
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
-        if(paused)
-                {
+        {
+            if (paused)
+            {
                 Play();
             }
             else
@@ -32,14 +30,18 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
-        paused = true;  
+        AudioListener.pause = true;
+        paused = true;
     }
+
     public void Play()
     {
         PauseMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = false;
         paused = false;
     }
+
     public void MainMenuButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
