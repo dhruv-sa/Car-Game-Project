@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terrain started.unity
     guid: af81a91486bff984eb5cd550844f2eb7
+  - enabled: 1
+    path: Assets/Scenes/EndMenu.unity
+    guid: f6cd6237b8b5f96449196e1f3bb49f60
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
