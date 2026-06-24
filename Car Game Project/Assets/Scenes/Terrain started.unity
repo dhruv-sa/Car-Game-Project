@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 47894511}
   m_Layer: 0
   m_Name: f06d_body_sedan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16038,7 +16038,6 @@ GameObject:
   - component: {fileID: 1209041699}
   - component: {fileID: 1209041698}
   - component: {fileID: 1209041697}
-  - component: {fileID: 1209041700}
   m_Layer: 5
   m_Name: Speedometer
   m_TagString: Untagged
@@ -16079,7 +16078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc873309fe1f74a4a93e7a12eb4d2eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Speedometer
-  target: {fileID: 0}
+  target: {fileID: 2023066023}
   maxSpeed: 220
   minSpeedArrowAngle: 125
   maxSpeedArrowAngle: -122.712
@@ -16124,25 +16123,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209041695}
   m_CullTransparentMesh: 1
---- !u!114 &1209041700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209041695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc873309fe1f74a4a93e7a12eb4d2eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Speedometer
-  target: {fileID: 0}
-  maxSpeed: 220
-  minSpeedArrowAngle: 125
-  maxSpeedArrowAngle: -126
-  speedLabel: {fileID: 1837296380}
-  arrow: {fileID: 1470479923}
-  smoothTime: 0.3
 --- !u!1 &1211638267
 GameObject:
   m_ObjectHideFlags: 0
